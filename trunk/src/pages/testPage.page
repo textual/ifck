@@ -1,0 +1,45 @@
+<apex:page standardcontroller="TEST__c" > 
+<script type="text/javascript" src="{!$Resource.jQuery}"></script>
+    <apex:form >
+
+    <apex:pageMessages />
+    <apex:pageBlock title="Edit/Create Entry" id="editBlock" mode="edit">
+
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+
+        <apex:pageBlockSection title="Entry Information"  columns="1">
+              
+                 <apex:pageBlockSectionItem >
+                    <apex:outputLabel for="name" value="Title:"/>
+                    <apex:inputField id="name" value="{!TEST__c.Name}"/>
+                  </apex:pageBlockSectionItem>
+
+                <script type="text/javascript" src="{!URLFOR($Resource.fckEditor, '/fckeditor/fckeditor.js')}"></script>
+
+                <apex:pageBlockSectionItem >
+	               <apex:outputLabel for="abs" value="Summary/Abstract:"/><apex:inputTextarea id="abs" value="{!TEST__c.testinput__c}" styleClass="editor2" />
+                </apex:pageBlockSectionItem>
+                <script type="text/javascript">
+                window.onload = function() {
+                	var editId = $(".editor2").attr("id");
+                    var newEditor = new FCKeditor($(".editor2").attr("id"));
+                    newEditor.BasePath = "{!URLFOR($Resource.fckEditor, '/fckeditor/')}";
+                    newEditor.Config['CustomConfigurationsPath'] = newEditor.BasePath + 'richtext.config.js';
+                    newEditor.ToolbarSet = 'SalesforceBasic';
+                    newEditor.Config['ImageBrowserURL'] = '{!$Page.SiteFileBrowser}';
+                    newEditor.Config['SkinPath'] = newEditor.BasePath + 'editor/skins/sfdc/';
+                    newEditor.Width = '100%'; 
+    				newEditor.Height = '512';
+                    newEditor.ReplaceTextarea();
+				}
+                </script>
+           
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+
+    </apex:form>
+
+</apex:page>
