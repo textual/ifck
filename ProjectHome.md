@@ -1,0 +1,1 @@
+Appiphony's Improved FCK Editor for _Salesforce.com_ is an extension of the popular FCK Editor package which supports **image uploads** and **publicly available image browsing** through custom Apex classes. Additionally, it and specifies configuration options for useful out of the box Salesforce.com support.
